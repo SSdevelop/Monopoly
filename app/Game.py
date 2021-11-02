@@ -1,9 +1,10 @@
 from typing import List, Optional
+import os
 
-from app.board import Board
-from app.config import Config
-from app.die_pair import DiePair
-from app.player import Player
+from app.Board import Board
+from app.Config import Config
+from app.DiePair import DiePair
+from app.Player import Player
 from json import dumps, loads
 from pathlib import Path
 
@@ -13,7 +14,7 @@ class Game:
     Defines the game.
     """
 
-    def __init__(self, player_count: int=2, game_dict=None):
+    def __init__(self, player_count: int = 2, game_dict=None):
         self.board = Board()
         self.die_pair = DiePair()
         self.game_aborted = False
@@ -27,7 +28,6 @@ class Game:
             self.players = self.create_players(player_count)
             self.current_player_id = 0
             self.current_round = 1
-
 
     def launch_game(self):
         # show the current turn
@@ -166,7 +166,7 @@ class Game:
             'current_round': self.current_round,
         }
 
-    def get_file_name(self):
+    def get_file_name(self, path: str = ''):
         """
         Get the file name to save a monopoly game.
         """
@@ -180,13 +180,14 @@ class Game:
 
             return f'monopoly_{counter}.json'
 
-    def save_game(self):
+    def save_game(self, path: str = ''):
         """
         Save the game to file.
         """
-        file_name = self.get_file_name()
-        path = Path('saved_games').joinpath(file_name)
+        file_name = self.get_file_name(path)
+        path = Path(path + 'saved_games').joinpath(file_name)
         with path.open('w') as f:
             game_data = self.to_dict()
             f.write(dumps(game_data, indent=4))
             print(f'Game was saved as: {file_name}. Use this name to load it.')
+        return file_name

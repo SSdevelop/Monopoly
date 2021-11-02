@@ -1,9 +1,9 @@
 """
 Player test cases
 """
-from app.config import Config
-from app.game import Game
-from app.player import Player
+from app.Config import Config
+from app.Game import Game
+from app.Player import Player
 
 game = Game(player_count=3)
 
@@ -91,7 +91,7 @@ def test_pay_rent():
     """
     Test a player paying rent to another player.
     """
-    from app.square import PropertySquare
+    from app.Square import PropertySquare
 
     # create some players.
     p1 = game.players[0]
@@ -117,7 +117,7 @@ def test_buy_property():
     Test buy a new property.
     """
 
-    from app.square import PropertySquare
+    from app.Square import PropertySquare
 
     local_game = Game(2)
     p1 = local_game.players[0]

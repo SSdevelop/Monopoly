@@ -1,6 +1,6 @@
 from random import choice
 
-from app.config import Config
+from app.Config import Config
 
 
 class Player:
@@ -9,7 +9,7 @@ class Player:
     """
 
     def __init__(self, game, token: str = 'Player 1', player_id: int = 0, player_dict=None):
-        from app.game import Game
+        from app.Game import Game
 
         self.game: Game = game
 
@@ -28,7 +28,7 @@ class Player:
             self.jail_feeling_lucky_mode = False
 
     def __init_from_dict(self, player_dict):
-        from app.square import PropertySquare
+        from app.Square import PropertySquare
 
         # load player from dict
         self.token = player_dict['token']
@@ -166,7 +166,7 @@ class Player:
         return self.balance < 0
 
     def get_properties(self):
-        from app.square import PropertySquare
+        from app.Square import PropertySquare
         # store the properties here.
         properties = []
 
@@ -184,7 +184,7 @@ class Player:
         Exit the game.
         """
         # import the property square to avoid a circular import
-        from app.square import PropertySquare
+        from app.Square import PropertySquare
 
         # mark the user as exited.
         self.has_exited = True

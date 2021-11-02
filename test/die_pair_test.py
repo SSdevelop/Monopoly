@@ -1,13 +1,13 @@
 """
 Test the die_pair.DiePair.py class.
 """
-from app.die import Die
-from app.die_pair import DiePair
+from app.Die import Die
+from app.DiePair import DiePair
 
 
 def test_get_total_value():
     """
-    Test the total outcome when we roll a pair
+    Test the total outcome when we roll a pair of dice.
     """
 
     # ensure that 1 is the result every time
@@ -28,6 +28,9 @@ def test_get_total_value():
 
     # check the die results
     assert 3 == die_pair.get_total_value()
+
+    # checks the value of both the dices.
+    assert die_pair.get_results() == 'Die 1: 1, Die 2: 2'
 
 
 def test_is_double():
@@ -53,3 +56,6 @@ def test_is_double():
 
     # check the die results
     assert die_pair.is_double()
+
+    # checks the value of both the dices.
+    assert die_pair.get_results() == 'Die 1: 2, Die 2: 2'

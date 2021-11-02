@@ -2,8 +2,8 @@
 Here, we test the various game scenarios
 """
 
-from app.config import Config
-from app.game import Game
+from app.Config import Config
+from app.Game import Game
 
 
 def test_salary_start():
@@ -45,7 +45,7 @@ def test_land_on_property_then_buys():
     Test user lands on a property cell.
     """
     game = Game(4)
-    from app.square import PropertySquare
+    from app.Square import PropertySquare
 
     property_: PropertySquare = game.board.get_square(12)
     assert property_.owner_token is None
@@ -71,7 +71,7 @@ def test_user_lands_on_unowned_property_declines_buy():
     """
 
     game = Game(4)
-    from app.square import PropertySquare
+    from app.Square import PropertySquare
 
     property_: PropertySquare = game.board.get_square(10)
     assert property_.owner_token is None
@@ -89,7 +89,7 @@ def test_player_lands_on_income_tax_then_pays_tax():
      Player lands on income tax, they pay tax
     """
     game = Game(4)
-    from app.square import IncomeTaxSquare
+    from app.Square import IncomeTaxSquare
     income_tax: IncomeTaxSquare = game.board.get_square(4)
     player = game.players[0]
     init_balance = player.balance
@@ -102,7 +102,7 @@ def test_player_lands_in_jail_visiting_then_nothing_happens():
     Player lands on in jail / visiting. Nothing happens
     """
     game = Game(4)
-    from app.square import InJailOrVisitingSquare
+    from app.Square import InJailOrVisitingSquare
     jail_square: InJailOrVisitingSquare = game.board.get_square(6)
     player = game.players[0]
     init_balance = player.balance
@@ -118,7 +118,7 @@ def test_player_chance_then_lose_or_gain_money():
     Player lands on a chance, they either lose or gain some money. balance is updated.
     """
     game = Game(4)
-    from app.square import ChanceSquare
+    from app.Square import ChanceSquare
     chance_sq: ChanceSquare = game.board.get_square(9)
     player = game.players[0]
     init_balance = player.balance
@@ -132,7 +132,7 @@ def test_land_free_parking_nothing_happens():
     Player lands on free parking. nothing happens
     """
     game = Game(4)
-    from app.square import FreeParkingSquare
+    from app.Square import FreeParkingSquare
     square: FreeParkingSquare = game.board.get_square(11)
     player = game.players[0]
     init_balance = player.balance
@@ -147,7 +147,7 @@ def test_player_lands_on_go_to_jail_then_are_jailed():
     Player lands on go to jail. They are jailed. Ensure Correct state and correct position.
     """
     game = Game(4)
-    from app.square import GoToJailSquare
+    from app.Square import GoToJailSquare
     square: GoToJailSquare = game.board.get_square(16)
     player = game.players[0]
 
@@ -168,7 +168,7 @@ def test_play_after_being_jailed_1():
     player position should be the same. they are still in jail
     """
     game = Game(4)
-    from app.square import GoToJailSquare
+    from app.Square import GoToJailSquare
     square: GoToJailSquare = game.board.get_square(16)
     player = game.players[0]
     square.land_on(player)
@@ -191,7 +191,7 @@ def test_play_after_being_jailed_2():
     user should pay fine. No longer jailed. Position should change.
     """
     game = Game(4)
-    from app.square import GoToJailSquare
+    from app.Square import GoToJailSquare
     square: GoToJailSquare = game.board.get_square(16)
     player = game.players[0]
     square.land_on(player)
@@ -223,7 +223,7 @@ def test_play_after_being_jailed_3():
     Config.DIE_2_VALUE = 1
 
     game_temp = Game(4)
-    from app.square import GoToJailSquare
+    from app.Square import GoToJailSquare
     square: GoToJailSquare = game_temp.board.get_square(16)
     player = game_temp.players[1]
     square.land_on(player)
@@ -251,7 +251,7 @@ def test_play_after_being_jailed_4():
     Config.DEFAULT_BAIL_MODE_PAY_NOW = '2'
 
     game = Game(4)
-    from app.square import GoToJailSquare
+    from app.Square import GoToJailSquare
     square: GoToJailSquare = game.board.get_square(16)
     player = game.players[0]
     square.land_on(player)
@@ -278,7 +278,7 @@ def test_play_after_being_jailed_5():
     Config.DEFAULT_BAIL_MODE_PAY_NOW = '1'
 
     game = Game(4)
-    from app.square import GoToJailSquare
+    from app.Square import GoToJailSquare
     square: GoToJailSquare = game.board.get_square(16)
     player = game.players[0]
     square.land_on(player)
@@ -303,7 +303,7 @@ def test_play_after_being_jailed_6():
     Config.DEFAULT_JAIL_STRATEGY = '2'
 
     game = Game(4)
-    from app.square import GoToJailSquare
+    from app.Square import GoToJailSquare
     square: GoToJailSquare = game.board.get_square(16)
     player = game.players[0]
     square.land_on(player)
@@ -323,7 +323,7 @@ def test_player_lands_on_owned_property_then_pays_rent():
     """
     User lands on property owned by someone else, they pay rent
     """
-    from app.square import PropertySquare
+    from app.Square import PropertySquare
 
     game = Game(4)
     # player 1 buys property.

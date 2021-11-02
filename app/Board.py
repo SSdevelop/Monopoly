@@ -1,6 +1,6 @@
 from typing import Optional
 
-from app.square import Square, GoSquare, PropertySquare, IncomeTaxSquare, InJailOrVisitingSquare, \
+from app.Square import Square, GoSquare, PropertySquare, IncomeTaxSquare, InJailOrVisitingSquare, \
     FreeParkingSquare, GoToJailSquare, ChanceSquare
 
 
@@ -10,14 +10,7 @@ class Board:
     """
 
     def __init__(self):
-        self.squares = self.create_squares()
-
-    def create_squares(self):
-        """
-        Create the board squares.
-        :return:  The board squares.
-        """
-        return [
+        self.squares = [
             GoSquare(name='Go', position=1),
             PropertySquare(name='Central', position=2, price=800, rent=90),
             PropertySquare(name='Wan Chai', position=3, price=700, rent=65),

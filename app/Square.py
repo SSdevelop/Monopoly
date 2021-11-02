@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 from random import choice
 
-from app.config import Config
-from app.player import Player
+from app.Config import Config
+from app.Player import Player
 
 
 class Square(ABC):

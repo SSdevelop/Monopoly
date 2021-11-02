@@ -1,5 +1,5 @@
-from .config import Config
-from .die import Die
+from .Config import Config
+from .Die import Die
 
 
 class DiePair:

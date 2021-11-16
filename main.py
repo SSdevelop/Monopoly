@@ -13,11 +13,24 @@ if __name__ == '__main__':
     print('2. Start A New Game')
     choice = input('Enter your selection :>')
     if choice == '1':
-        file_name = input('Enter the file name (e.g monopoly_1.json) :>').strip()
-        path = Path('saved_games').joinpath(file_name)
-        if not path.exists():
-            print(f'Error: File {file_name} was not found in the folder \'saved games\'. Try again.')
-
+        # file_name = input('Enter the file name (e.g monopoly_1.json) :>').strip()
+        # path = Path('saved_games').joinpath(file_name)
+        # if not path.exists():
+        #     print(f'Error: File {file_name} was not found in the folder \'saved games\'. Try again.')
+        exists = True
+        file_name = ''
+        path = None
+        while exists:
+            file_name = input('Enter the file name (e.g monopoly_1.json) :>').strip()
+            path = Path('saved_games').joinpath(file_name)
+            # if not path.exists():
+            #     print(f'Error: File {file_name} was not found in the folder \'saved games\'. Try again.')
+            exists = path.exists()
+            if not exists:
+                print("Please Enter a correct file name or restart the game.")
+                exists = True
+            else:
+                break
         try:
             with path.open('r') as f:
                 game_dict = loads(f.read())

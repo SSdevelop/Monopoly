@@ -1,0 +1,42 @@
+{
+    "players": [
+        {
+            "token": "Player 1",
+            "balance": 1500,
+            "is_jailed": false,
+            "square_position": 1,
+            "has_exited": false,
+            "player_id": 0,
+            "move_count_since_jail": 0,
+            "jail_bail_mode": false,
+            "jail_feeling_lucky_mode": false,
+            "properties": []
+        },
+        {
+            "token": "Player 2",
+            "balance": 1500,
+            "is_jailed": false,
+            "square_position": 1,
+            "has_exited": false,
+            "player_id": 1,
+            "move_count_since_jail": 0,
+            "jail_bail_mode": false,
+            "jail_feeling_lucky_mode": false,
+            "properties": []
+        },
+        {
+            "token": "Player 3",
+            "balance": 1500,
+            "is_jailed": false,
+            "square_position": 1,
+            "has_exited": false,
+            "player_id": 2,
+            "move_count_since_jail": 0,
+            "jail_bail_mode": false,
+            "jail_feeling_lucky_mode": false,
+            "properties": []
+        }
+    ],
+    "current_player_id": 0,
+    "current_round": 1
+}

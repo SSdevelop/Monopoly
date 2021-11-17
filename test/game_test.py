@@ -1,4 +1,5 @@
 import os
+import json
 
 from app.Game import Game
 
@@ -107,3 +108,14 @@ def test_save_game():
     os.chdir(parent_path)
     filename = game.save_game()
     assert os.path.exists(parent_path + '\\saved_games\\' + filename)
+
+def test_load_game():
+    """
+    To test whether the game could be loaded correctly or not.
+    """
+    pwd = os.getcwd()
+    with open(pwd + '\\saved_games\\monopoly_1.json') as json_file:
+        game_file = json.load(json_file)
+        game = Game(game_dict=game_file)
+        # game.launch_game()
+        assert game.current_round
